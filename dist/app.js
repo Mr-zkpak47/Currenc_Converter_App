@@ -107,9 +107,9 @@ do {
             const welcomeAgainText = `Welcome Again Buddy.`;
             const textCenter = centerText(welcomeAgainText);
             const textAnimation = chalkAnimation.rainbow(textCenter);
-            await textAnimation.start();
+            textAnimation.start();
             await sleep();
-            await textAnimation.stop();
+            textAnimation.stop();
             await currencyConverter();
         }
         if (options.select == "Exit") {

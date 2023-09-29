@@ -6,14 +6,14 @@ import { createSpinner } from "nanospinner";
 import figlet from "figlet";
 import gradient from "gradient-string";
 
-const exitText = async() => {
+const exitText = async () => {
   figlet.text(
     "Thanks for using our Currency Converter App.",
     {
-      font:"Standard",
+      font: "Standard",
       horizontalLayout: "full",
       verticalLayout: "fitted",
-      width:150,
+      width: 150,
       whitespaceBreak: true,
     },
     function (err, data) {
@@ -58,8 +58,8 @@ const welcome = async () => {
    \\______  /____/ |__|   |__|    \\___  >___|  /\\___  > ____|  \\______  /\\____/|___|  /\\_/  \\___  >__|   |__|  \\___  >__|   
           \\/                          \\/     \\/     \\/\\/              \\/            \\/          \\/                 \\/       
   `);
-  console.log(logo)
-  await sleep()
+  console.log(logo);
+  await sleep();
 };
 const fetchData = async () => {
   const rawData = fs.readFileSync("SampleOutput.json", "utf8");
@@ -93,14 +93,18 @@ const currencyConverter = async () => {
   let conversionRate = secondCountryConversionRate / firstCountryConversionRate;
   let finalCurrency = amount.rupee * conversionRate;
   const spinner = createSpinner(
-    chalk.red(`Converting from ${firstCountry.select} to ${secondCountry.select}`
-  )).start();
+    chalk.red(
+      `Converting from ${firstCountry.select} to ${secondCountry.select}`
+    )
+  ).start();
   await sleep();
   spinner.success({
-    text: chalk.green(`Converted from ${firstCountry.select} to ${secondCountry.select} : ${finalCurrency}`),
+    text: chalk.green(
+      `Converted from ${firstCountry.select} to ${secondCountry.select} : ${finalCurrency}`
+    ),
   });
 };
-console.clear()
+console.clear();
 await welcome();
 await currencyConverter();
 do {
@@ -116,24 +120,24 @@ do {
       spinner.start();
       await sleep();
       spinner.stop();
-      const welcomeAgainText = `Welcome Again Buddy.`
+      const welcomeAgainText = `Welcome Again Buddy.`;
       const textCenter = centerText(welcomeAgainText);
-      const textAnimation = chalkAnimation.rainbow(textCenter)
-      await textAnimation.start()
+      const textAnimation = chalkAnimation.rainbow(textCenter);
+      textAnimation.start();
       await sleep();
-      await textAnimation.stop()
+      textAnimation.stop();
       await currencyConverter();
     }
     if (options.select == "Exit") {
       const spinner = createSpinner(`Exiting`);
-      spinner.start({text:chalk.green("Exiting"),color:"red"});
+      spinner.start({ text: chalk.green("Exiting"), color: "red" });
       await sleep();
-      spinner.success({ text:chalk.greenBright(`Exited`)});
+      spinner.success({ text: chalk.greenBright(`Exited`) });
       await sleep();
-      await exitText()
-      await sleep()
+      await exitText();
+      await sleep();
       process.exit();
     }
   };
   await repeater();
-} while (true); 
+} while (true);
