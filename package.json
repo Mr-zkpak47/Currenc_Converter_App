@@ -1,9 +1,13 @@
 {
-  "name": "currency-converter",
+  "name": "@zohaibkhan/currency-converter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "files": ["dist/app.js", "dist/SampleOutput.json"],
   "type": "module",
+  "bin": {
+    "currency-converter": "dist/app.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

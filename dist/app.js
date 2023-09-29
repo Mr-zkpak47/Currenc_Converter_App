@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import * as fs from "fs";
 import inquirer from "inquirer";
 import chalk from "chalk";
@@ -53,7 +54,7 @@ const welcome = async () => {
     await sleep();
 };
 const fetchData = async () => {
-    const rawData = fs.readFileSync("SampleOutput.json", "utf8");
+    const rawData = fs.readFileSync("dist/SampleOutput.json", "utf8");
     const data = await JSON.parse(rawData);
     conversionRates = data.conversion_rates;
     return conversionRates;
