@@ -54,7 +54,7 @@ const welcome = async () => {
     await sleep();
 };
 const fetchData = async () => {
-    const rawData = fs.readFileSync("dist/SampleOutput.json", "utf8");
+    const rawData = fs.readFileSync("node_modules/@zohaibkhan/currency-converter/dist/SampleOutput.json", "utf8");
     const data = await JSON.parse(rawData);
     conversionRates = data.conversion_rates;
     return conversionRates;
